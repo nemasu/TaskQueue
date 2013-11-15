@@ -4,10 +4,17 @@
  * Description: Object that runs tasks without freezing browser.
  * 
  * Usage:
+ * Push a function, if it returns true, it will pop off the queue,
+ * if it returns false, it will retry.
+ * 
+ * Eg:
  * q = new TaskQueue( 200 );
  * q.push( function() {
- *     console.log('Hiii');
- *     return true;
+ *     if( console != undefined ) {
+ *         console.log('Hiii');
+ *         return true;
+ *     }
+ *     return false;
  * });
  */
 function TaskQueue( frequency ) {
